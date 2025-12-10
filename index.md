@@ -1,8 +1,6 @@
 ## Final Project Report
 
-
 ### 1. Video
-
 
 ### Demo Video
 
@@ -15,7 +13,7 @@ allowfullscreen></iframe>
 ### 2. Images
 
 <p align="center">
-  <img src="image/README/1765328968808.png" width="400" height="400">
+  <img src="image/README/1765328968808.png" width="400">
 </p>
 
 <table align="center" style="border-spacing:15px;">
