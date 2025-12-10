@@ -233,22 +233,16 @@ If you’ve never made a GitHub pages website before, you can follow this webpag
 
 ### 1. Video
 
-[Insert final project video here]
 
-[demo](https://drive.google.com/file/d/1NfnbyFwAhD3WYVOVw-Bm2vMTAKM98dG_/view?usp=sharing)
+[Demo](https://drive.google.com/file/d/1NfnbyFwAhD3WYVOVw-Bm2vMTAKM98dG_/view?usp=sharing)
 
-- The video must demonstrate your key functionality.
-- The video must be 5 minutes or less.
-- Ensure your video link is accessible to the teaching team. Unlisted YouTube videos or Google Drive uploads with SEAS account access work well.
-- Points will be removed if the audio quality is poor - say, if you filmed your video in a noisy electrical engineering lab.
 
 ### 2. Images
 
-[Insert final project images here]
 
 ![1765328968808](image/README/1765328968808.png)![1765328991519](image/README/1765328991519.png)![1765329075458](image/README/1765329075458.png)![1765329086569](image/README/1765329086569.png)![1765329094711](image/README/1765329094711.png)![1765329145726](image/README/1765329145726.png)![1765329169022](image/README/1765329169022.png)
 
-_Include photos of your device from a few angles. If you have a casework, show both the exterior and interior (where the good EE bits are!)._
+
 
 ### 3. Results
 
@@ -281,11 +275,6 @@ When the ATMEGA recieves the recieves the move, it debug prints it to serial ter
 
 #### 3.1 Software Requirements Specification (SRS) Results
 
-_Based on your quantified system performance, comment on how you achieved or fell short of your expected requirements._
-
-_Did your requirements change? If so, why? Failing to meet a requirement is acceptable; understanding the reason why is critical!_
-
-_Validate at least two requirements, showing how you tested and your proof of work (videos, images, logic analyzer/oscilloscope captures, etc.)._
 
 | ID     | Description                                                                                                                                                                    | Validation Outcome                                                                                                                             |
 | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -304,20 +293,16 @@ All listed requirements exceot 2 and 3 were met but some lack the photographic o
 
 #### 3.2 Hardware Requirements Specification (HRS) Results
 
-_Based on your quantified system performance, comment on how you achieved or fell short of your expected requirements._
 
-_Did your requirements change? If so, why? Failing to meet a requirement is acceptable; understanding the reason why is critical!_
-
-_Validate at least two requirements, showing how you tested and your proof of work (videos, images, logic analyzer/oscilloscope captures, etc.)._
 
 | ID     | Description                                                    | Validation Outcome                                                                                                                  |
 | ------ | -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| HRS-01 | The electromagnet must be operable through the chess board.    | Confirmed, the electromagnet can to any cell of the chess board.                                                                  |
+| HRS-01 | The electromagnet must be operable through the chess board.    | Confirmed, the electromagnet can move to any cell of the chess board. Video shown in demo.                                                               |
 | HRS-02 | No piece motion should take more than 10s.                     | The piece motion need about 20s, because the moving of electromagnet cannot be very fast, otherwise the piece cannot be held. |
-| HRS-03 | The system shall exhibit a 2D gantry with taxi.                |                                                                                                                                     |
-| HRS-04 | No piece should fall over at any instance                      |                                                                                                                                     |
-| HRS-05 | Locational accuracy of the pieces must be within a 1mm radius. |                                                                                                                                     |
-| HRS-06 | No piece should collide with another piece when moving         |                                                                                                                                     |
+| HRS-03 | The system shall exhibit a 2D gantry with taxi.                | Pass, video exhibited in demo.                                                                                                                                    |
+| HRS-04 | No piece should fall over at any instance                      | Pass, there were zero instances of pieces knocking over during transport. This was facilitated by ensuring the reed switches were installed correctly and not sticking through the board.                                                                                                                                   |
+| HRS-05 | Locational accuracy of the pieces must be within a 1mm radius. | We did not measure this, but after every move, the gantry was recalibrated to ensure the best accuracy. Further, the stepper motor is capabale of hitting this requirement.                                                                                                                                      |
+| HRS-06 | No piece should collide with another piece when moving         | This could have been tested more, but code was implemented to ensure that the pieces traveled along the space between the other pieces on the board.                                                                                                                                      |
 |        |                                                                |                                                                                                                                     |
 
 ### 4. Conclusion
