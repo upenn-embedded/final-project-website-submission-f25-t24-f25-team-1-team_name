@@ -14,7 +14,22 @@ allowfullscreen></iframe>
 
 ### 2. Images
 
-![1765328968808](image/README/1765328968808.png)![1765328991519](image/README/1765328991519.png)![1765329075458](image/README/1765329075458.png)![1765329086569](image/README/1765329086569.png)![1765329094711](image/README/1765329094711.png)![1765329145726](image/README/1765329145726.png)![1765329169022](image/README/1765329169022.png)
+<p align="center">
+  <img src="image/README/1765328968808.png" width="400" height="400">
+</p>
+
+<table align="center" style="border-spacing:15px;">
+  <tr>
+    <td><img src="image/README/1765328991519.png" width="300"></td>
+    <td><img src="image/README/1765329075458.png" width="300"></td>
+    <td><img src="image/README/1765329086569.png" width="300"></td>
+  </tr>
+  <tr>
+    <td><img src="image/README/1765329094711.png" width="300"></td>
+    <td><img src="image/README/1765329145726.png" width="300"></td>
+    <td><img src="image/README/1765329169022.png" width="300"></td>
+  </tr>
+</table>
 
 ### 3. Results
 
