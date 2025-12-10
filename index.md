@@ -1,6 +1,7 @@
 ## Final Project Report
 
-1. Video
+
+### 1. Video
 
 [Demo:]([https://youtu.be/V5qFEILboPI](https://youtu.be/V5qFEILboPI))
 [https://youtu.be/V5qFEILboPI](https://youtu.be/V5qFEILboPI)
