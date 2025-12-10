@@ -234,7 +234,8 @@ If you’ve never made a GitHub pages website before, you can follow this webpag
 ### 1. Video
 
 
-[Demo](https://drive.google.com/file/d/1NfnbyFwAhD3WYVOVw-Bm2vMTAKM98dG_/view?usp=sharing)
+[Demo:]([https://youtu.be/V5qFEILboPI](https://youtu.be/V5qFEILboPI))
+[https://youtu.be/V5qFEILboPI](https://youtu.be/V5qFEILboPI)
 
 
 ### 2. Images
@@ -246,12 +247,15 @@ If you’ve never made a GitHub pages website before, you can follow this webpag
 
 ### 3. Results
 
-Game board scanning works on a firmware level, but physically, the magnets embeded in the chess pieces we had on hand were relativly weak and required accuarte placement to close each reed switch.
+Game board scanning works on a firmware level, but physically, the magnets embeded in the chess pieces we had on hand were relativly weak and required accurate placement to close each reed switch. The game board integrated reed switches for each square, with careful attention to how they were installed to ensure that the electromagnet was able to get as close to the pieces as possible. 
+
 Scanning the state of each reed switch required 8 GPIO extenders using I2C communication with the Atmega328PB. To achive this, we wrote a custom two wire interface driver that Alex named I2C but has all the funciton calls as TWI.
+
 We managed to write application code for the ESP32 to read JSON files downloaded from lichess.org corresponding to any user game. The ESP communicates with the ATmega over the Atmega's UART1.
-When trying to create the code to connect with a online chess platfrom, we learned that Chess.com does not have a publicly avaible API that allows for both game streaming and move uploading but the competitor site, lichess.org did.
-So now, when the ESP32 turns on, it first tries to connect to wifi and then to the user account defined in [network-stuff](ESP32_lichess/network_stuff.h). It will then search for an active game, bot or human, and connect to it.
-If connected to a computer with the appropriate drivers, it will print out the progress to seral terminal.
+
+When trying to create the code to connect with a online chess platfrom, we learned that chess.com does not have a publicly avaible API that allows for both game streaming and move uploading but the competitor site, lichess.org did.
+
+So now, when the ESP32 turns on, it first tries to connect to wifi and then to the user account defined in [network-stuff](ESP32_lichess/network_stuff.h). It will then search for an active game, bot or human, and connect to it. If connected to a computer with the appropriate drivers, it will print out the progress to seral terminal.
 
 In parallel, when the ATmega powers on, it initalizes all the GPIO expanders over I2C to set them up as data inputs with their internal pull up resistors on and in active low mode. It scans once for a inital board state and then enters the endless loop where it runs on the state machine described in sprint 2. When sending a move, it follows the following message format thats also described in the top comments of [lichess code](ESP32_lichess/ESP32_lichess.ino)
 
@@ -272,6 +276,8 @@ Upon the ESP32 recieving the move over UART1, the ESP32 will faithfully send the
 
 The ESP32 does not oeprate on a strict sent move, wait for move, send move basis. It will send all messages from the ATmega that follow the format to lichess and send all lichess moves to the ATmega. The ESP32 does run application code to parse the JSON file that lichess uses to stream the game state with its API. This is unavoidable since sending the entire file over UART1 and having the ATmega also parse it would have taken way too much development time. The ESP32 parses the game log and sends the most recent moves to the ATMEGA only if the move does not match the last move the ATMEGA also sent.
 When the ATMEGA recieves the recieves the move, it debug prints it to serial terminal over uart0 and parses the message to generate a list of commands for the motor control driver.
+
+The gantry was successfully implemented and functioned as expected. All individual functionality worked, but the team had some issues during full integration. Our hypothesis for the root cause of the failure is discussed below. Given that full integration happened right before the final demo (components arrived super late), we are happy with how far we got and believe an extra day could get full functionality. 
 
 #### 3.1 Software Requirements Specification (SRS) Results
 
@@ -311,33 +317,34 @@ Reflect on your project. Some questions to address:
 
 - What did you learn from it?
 
-The difference from a product and a good product is more time, money, and a good supply chain.
+The difference from a product and a good product is more time, money, and a good supply chain. We believe if we had all of these, our project would be on another level. 
 
 - What went well?
 
-The final sprint building the physical gantry, proto-prototypes, and software were relativly smooth.
+The final sprint building the physical gantry, proto-prototypes, and software were relativly smooth. Overall individual functionality worked excellently. 
 
 - What accomplishments are you proud of?
 
-I think managing to write a custom I2C library for the 64 indevidual inputs was pretty cool. Also using the lichess.org API to play and stream the game online was a magor breakthrough.
+Managing to write a custom I2C library for the 64 indevidual inputs was pretty cool. Also using the lichess.org API to play and stream the game online was a major breakthrough. Moving the pieces with the gantry through the board was also super exciting for us. 
 
 - What did you learn/gain from this experience?
 
-Reading the datasheets for each electronic component found in Detkin that we needed to use was pretty new. Especially the MCP23008 GPIO expanders that were needed to write the I2C driver.
+Reading the datasheets for each electronic component found in Detkin that we needed to use was pretty new. Especially the MCP23008 GPIO expanders that were needed to write the I2C driver. Implementation with lichess was a new experience, and some team members had never worked with the components that we were utilizing. 
 
-- Did you have to change your approach?
-- What could have been done differently?
+- Did you have to change your approach / what could have been done differently?
 
-Integrating skeleton code should have been done first. We failed to consider how components would communicate with each other beforehand and that slowed down integration considerably. I developed the message format between the ESP32 and ATmega after the MVP demo. We should have done so back in sprint 2 to define the descrete input/output of each software component. Development of the motor drivers was also slow. Parsing messages was simple but the fucntions used to control the motors with variable specific directions wasn't ready until the morning of the demo day.
+Integrating skeleton code should have been done first. We failed to consider how components would communicate with each other beforehand and that slowed down integration considerably. I developed the message format between the ESP32 and ATmega after the MVP demo. We should have done so back in sprint 2 to define the descrete input/output of each software component. Development of the motor drivers was also slow. Parsing messages was simple but the fucntions used to control the motors with variable specific directions wasn't ready until the morning of the demo day. We should have also flagged the supply chain issue much earlier in the project, and maybe we could have gotten more support. 
 
 - Did you encounter obstacles that you didn’t anticipate?
 
-Reed switches, the core pieces used to detect magnets were not delivered until 3 hours before our demo.
+Reed switches, the core pieces used to detect magnets were not delivered until 3 hours before our demo. We also had many issues with the laser cutters. 2/4 were not functional and hours were spent waiting to use them. The team had drafted expansions to the chess board for piece removal etc. but these could not be implemented due to the lack of functional lasers. 
 
 - What could be a next step for this project?
 
-Fully inegrate gantry motor control with the rest of the software.
+Fully inegrate gantry motor control with the rest of the software, finish building the board for a piece graveyard and to give an overall more finished look. 
 
 ## References
 
-Fill in your references here as you work on your final project. Describe any libraries used here.
+https://www.instructables.com/Automated-Chessboard/
+
+https://github.com/ese5160/a14-final-submission-group-chesstream?tab=readme-ov-file
